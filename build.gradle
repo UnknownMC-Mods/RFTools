@@ -5,10 +5,6 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -23,40 +19,26 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'maven'
 
 repositories {
-    maven { // The repo from which to get waila
-        name "Mobius Repo"
-        //url "https://tehnut.info/maven"
-        url "http://mobiusstrip.eu/maven"
-    }
     maven { // JEI
-        url "http://dvs1.progwml6.com/files/maven"
+        url "https://dvs1.progwml6.com/files/maven"
     }
-    maven {
-        name 'OC Repo'
-        url "http://maven.cil.li/"
+    maven { // Hwyla
+        url "https://maven.mcmoddev.com/"
     }
-    maven { // TOP
-        name 'tterrag maven'
+    maven { // TheOneProbe / CTM
         url "https://maven.tterrag.com/"
     }
-    maven { // McJtyLib
-        url "http://maven.k-4u.nl"
+    maven { // RedstoneFlux
+        url "https://maven.covers1624.net/"
     }
-    maven {
-        name = "sonatype"
-        url = "https://oss.sonatype.org/content/repositories/snapshots/"
+    maven { // Tesla
+        url "https://maven.blamejared.com/"
     }
-    maven {
-        name = "CoFH Maven"
-        url = "http://maven.covers1624.net"
+    maven { // intwheel / mcjtylib / xnet
+        url "https://maven.k-4u.nl/"
     }
-    maven { // Charset
-        name = "Elytra Maven"
-        url = "https://repo.elytradev.com"
-    }
-    maven {
-        name = "TESLA"
-        url = "https://maven.mcmoddev.com"
+    maven { // OpenComputers
+        url "https://maven.cil.li/"
     }
 }
 
@@ -87,25 +69,18 @@ artifacts {
     archives deobfJar
 }
 
-
 dependencies {
-    deobfCompile "mezz.jei:jei_${jei_version}"
-    deobfCompile "mcp.mobius.waila:Hwyla:${waila_version}"
-    deobfCompile "mcjty.theoneprobe:TheOneProbe-${top_version}"
-    deobfCompile "cofh:RedstoneFlux:${redstoneflux_version}"
-    //deobfCompile "net.darkhax.tesla:Tesla-${tesla_version}"
-    //deobfCompile "pl.asie.charset:charset:0.5.0.164"
-    compile "team.chisel.ctm:CTM:MC1.12-0.2.3.12"
 
+    deobfCompile "mezz.jei:jei_${jei_version}"
+    deobfCompile "mcp.mobius.waila:Hwyla:${hwaila_version}"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe-${theoneprobe_version}"
+    deobfCompile "cofh:RedstoneFlux:${redstoneflux_version}"
+    deobfCompile "net.darkhax.tesla:Tesla-${tesla_version}"
     deobfCompile "com.github.mcjty:intwheel:${intwheel_version}"
-    if (!project.hasProperty("singleproject")) {
-        deobfCompile "com.github.mcjty:mcjtylib:${mcjtylib_version}"
-        deobfCompile "com.github.mcjty:xnet:1.12-1.8.2"
-    } else {
-        compile project(':McJtyLib')
-        compile project(':XNet')
-    }
-    compile "li.cil.oc:OpenComputers:${oc_version}"
+    deobfCompile "com.github.mcjty:mcjtylib:${mcjtylib_version}"
+    deobfCompile "com.github.mcjty:xnet:${xnet_version}"
+    deobfCompile "li.cil.oc:OpenComputers:${opencomputers_version}"
+    deobfCompile "team.chisel.ctm:CTM:${ctm_version}"
 }
 
 jar {

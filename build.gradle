@@ -61,16 +61,17 @@ artifacts {
 
 dependencies {
 
-    deobfCompile "mezz.jei:jei_${jei_version}"
-    deobfCompile "mcp.mobius.waila:Hwyla:${hwyla_version}"
-    deobfCompile "mcjty.theoneprobe:TheOneProbe-${theoneprobe_version}"
-    deobfCompile "cofh:RedstoneFlux:${redstoneflux_version}"
-    deobfCompile "net.darkhax.tesla:Tesla-${tesla_version}"
-    deobfCompile "com.github.mcjty:intwheel:${intwheel_version}"
+    deobfProvided "mezz.jei:jei_${jei_version}"
+    deobfProvided "mcp.mobius.waila:Hwyla:${hwyla_version}"
+    deobfProvided "mcjty.theoneprobe:TheOneProbe-${theoneprobe_version}"
+    deobfProvided "cofh:RedstoneFlux:${redstoneflux_version}"
+    deobfProvided "net.darkhax.tesla:Tesla-${tesla_version}"
+    deobfProvided "com.github.mcjty:intwheel:${intwheel_version}"
+    deobfProvided "com.github.mcjty:xnet:${xnet_version}"
+    deobfProvided "li.cil.oc:OpenComputers:${opencomputers_version}"
+    deobfProvided "team.chisel.ctm:CTM:${ctm_version}"
+
     deobfCompile "com.github.mcjty:mcjtylib:${mcjtylib_version}"
-    deobfCompile "com.github.mcjty:xnet:${xnet_version}"
-    deobfCompile "li.cil.oc:OpenComputers:${opencomputers_version}"
-    deobfCompile "team.chisel.ctm:CTM:${ctm_version}"
 }
 
 jar {

@@ -62,7 +62,7 @@ artifacts {
 dependencies {
 
     deobfCompile "mezz.jei:jei_${jei_version}"
-    deobfCompile "mcp.mobius.waila:Hwyla:${hwaila_version}"
+    deobfCompile "mcp.mobius.waila:Hwyla:${hwyla_version}"
     deobfCompile "mcjty.theoneprobe:TheOneProbe-${theoneprobe_version}"
     deobfCompile "cofh:RedstoneFlux:${redstoneflux_version}"
     deobfCompile "net.darkhax.tesla:Tesla-${tesla_version}"

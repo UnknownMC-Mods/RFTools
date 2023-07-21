@@ -64,7 +64,7 @@ dependencies {
     deobfProvided "mezz.jei:jei_${jei_version}"
     deobfProvided "mcp.mobius.waila:Hwyla:${hwyla_version}"
     deobfProvided "mcjty.theoneprobe:TheOneProbe-${theoneprobe_version}"
-    deobfProvided "cofh:RedstoneFlux:${redstoneflux_version}"
+    deobfProvided "cofh:RedstoneFlux:${redstoneflux_version}:universal"
     deobfProvided "net.darkhax.tesla:Tesla-${tesla_version}"
     deobfProvided "com.github.mcjty:intwheel:${intwheel_version}"
     deobfProvided "com.github.mcjty:xnet:${xnet_version}"

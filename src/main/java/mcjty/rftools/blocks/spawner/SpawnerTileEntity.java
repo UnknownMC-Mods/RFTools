@@ -307,7 +307,7 @@ public class SpawnerTileEntity extends GenericEnergyReceiverTileEntity implement
 //        for (int i1 = i; i1 <= j; ++i1) {
 //            for (int j1 = k; j1 <= l; ++j1) {
 //                if (getWorld().getChunkProvider().chunkExists(i1, j1)) {
-//                    cnt += countEntitiesWithinChunkAABB(getWorld().getChunkFromChunkCoords(i1, j1), aabb);
+//                    cnt += countEntitiesWithinChunkAABB(getWorld().getChunk(i1, j1), aabb);
 //                }
 //            }
 //        }

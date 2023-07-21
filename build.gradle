@@ -47,6 +47,7 @@ minecraft {
     runDir = "run"
     mappings = mcp_mappings
     useDepAts = true
+    makeObfSourceJar = false
 }
 
 task deobfJar(type: Jar) {

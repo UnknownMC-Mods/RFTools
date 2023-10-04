@@ -9,31 +9,6 @@ buildscript {
 }
 
 apply plugin: "net.minecraftforge.gradle.forge"
-apply plugin: "maven"
-
-repositories {
-    maven { // JEI
-        url "https://dvs1.progwml6.com/files/maven"
-    }
-    maven { // Hwyla
-        url "https://maven.mcmoddev.com/"
-    }
-    maven { // TheOneProbe / CTM
-        url "https://maven.tterrag.com/"
-    }
-    maven { // RedstoneFlux
-        url "https://maven.covers1624.net/"
-    }
-    maven { // Tesla
-        url "https://maven.blamejared.com/"
-    }
-    maven { // intwheel / mcjtylib / xnet
-        url "https://maven.k-4u.nl/"
-    }
-    maven { // OpenComputers
-        url "https://maven.cil.li/"
-    }
-}
 
 if (System.getenv().DRONE_BUILD_NUMBER)
     version += "." + System.getenv().DRONE_BUILD_NUMBER
@@ -50,20 +25,19 @@ minecraft {
     makeObfSourceJar = false
 }
 
-task deobfJar(type: Jar) {
-    from sourceSets.main.output
-    classifier = "dev"
-}
-
-artifacts {
-    archives sourceJar
-    archives deobfJar
+repositories {
+    maven { url "https://dvs1.progwml6.com/files/maven" } // JEI
+    maven { url "https://maven.mcmoddev.com/" } // Hwyla
+    maven { url "https://maven.tterrag.com/" } // TheOneProbe / CTM
+    maven { url "https://maven.covers1624.net/" } // RedstoneFlux
+    maven { url "https://maven.blamejared.com/" } // Tesla
+    maven { url "https://maven.k-4u.nl/" } // intwheel / mcjtylib / xnet
+    maven { url "https://maven.cil.li/" } // OpenComputers
 }
 
 dependencies {
 
     deobfProvided "mezz.jei:jei_${jei_version}"
-    deobfProvided "mcp.mobius.waila:Hwyla:${hwyla_version}"
     deobfProvided "mcjty.theoneprobe:TheOneProbe-${theoneprobe_version}"
     deobfProvided "cofh:RedstoneFlux:${redstoneflux_version}:universal"
     deobfProvided "net.darkhax.tesla:Tesla-${tesla_version}"
@@ -72,13 +46,10 @@ dependencies {
     deobfProvided "li.cil.oc:OpenComputers:${opencomputers_version}"
     deobfProvided "team.chisel.ctm:CTM:${ctm_version}"
 
-    deobfCompile "com.github.mcjty:mcjtylib:${mcjtylib_version}"
-}
+    if (findProject(":Hwyla") != null) compile project(":Hwyla")
+    else deobfProvided "mcp.mobius.waila:Hwyla:${hwyla_version}"
 
-jar {
-    manifest {
-        attributes "FMLAT": "rftools_at.cfg"
-    }
+    deobfCompile "com.github.mcjty:mcjtylib:${mcjtylib_version}"
 }
 
 processResources {
@@ -97,5 +68,21 @@ processResources {
     // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude "mcmod.info"
+    }
+}
+
+tasks.register("deobfJar", Jar) {
+    from sourceSets.main.output
+    classifier = "dev"
+}
+
+artifacts {
+    archives sourceJar
+    archives deobfJar
+}
+
+jar {
+    manifest {
+        attributes "FMLAT": "rftools_at.cfg"
     }
 }
